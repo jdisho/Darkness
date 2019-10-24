@@ -38,12 +38,31 @@ class Menu: NSMenu {
         return menuItem
     }()
 
+    private lazy var quitMenuItem: NSMenuItem = {
+        let menuItem = NSMenuItem(
+            title: "Quit",
+            action: #selector(quitDarkness),
+            keyEquivalent: "Q"
+        )
+
+        menuItem.target = self
+        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
+
+        return menuItem
+    }()
+
     init() {
         super.init(title: "")
 
         addItem(NSMenuItem(title: "Appearance", action: nil, keyEquivalent: ""))
 
-        items.append(contentsOf: [lightMenuItem, darkMenuItem])
+        items.append(contentsOf: [
+            lightMenuItem,
+            darkMenuItem,
+            NSMenuItem.separator(),
+            quitMenuItem
+            ]
+        )
     }
 
     required init(coder: NSCoder) {
@@ -60,5 +79,9 @@ class Menu: NSMenu {
         Appearance.current = .dark
         lightMenuItem.state = .off
         darkMenuItem.state = .on
+    }
+
+    @objc private func quitDarkness() {
+        NSApplication.shared.terminate(self)
     }
 }
