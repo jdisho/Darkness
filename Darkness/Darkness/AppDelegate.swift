@@ -20,6 +20,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Appearance.didChange = { appearance in
             self.statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
         }
+
+        UserDefaults.standard.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: .new, context: nil)
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
     }
 
     @objc private func toggle() {
