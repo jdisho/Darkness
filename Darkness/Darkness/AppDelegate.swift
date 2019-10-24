@@ -14,11 +14,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem.button?.title = "☀"
+        statusItem.button?.title = Appearance.current == .dark ? "☀" : "☾"
+        statusItem.button?.action = #selector(toggle)
+
+        Appearance.didChange = { appearance in
+            self.statusItem.button?.title = appearance == .dark ? "☀" : "☾"
+        }
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    @objc private func toggle() {
+        Appearance.current.toggle()
     }
 }
 

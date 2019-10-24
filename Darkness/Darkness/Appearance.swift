@@ -16,13 +16,25 @@ enum Appearance: String {
         return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .some(.dark) ? "true" : "not dark mode")"
     }
 
-    static var mode: Appearance {
+    static var current: Appearance {
         get {
             UserDefaults.appleInterfaceStyle == Appearance.dark.rawValue ? .dark : .light
         }
         set {
             set(mode: newValue)
         }
+    }
+
+    static var didChange: ((Appearance) -> Void)?
+
+    func toggle() {
+        switch Appearance.current {
+        case .dark:
+            Appearance.current = .light
+        case .light:
+            Appearance.current = .dark
+        }
+        Appearance.didChange?(.current)
     }
 
     private static func set(mode: Appearance) {
