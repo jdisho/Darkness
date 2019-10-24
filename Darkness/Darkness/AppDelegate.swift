@@ -14,8 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
-        statusItem.button?.action = #selector(toggle)
+        configureStatusItem()
 
         Appearance.didChange = { appearance in
             self.statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
@@ -30,6 +29,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func toggle() {
         Appearance.current.toggle()
+    }
+
+    private func configureStatusItem() {
+        statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
+        statusItem.button?.action = #selector(toggle)
+
+        let menu = NSMenu()
+        menu.delegate = self
+    }
+}
+
+// MARK: NSMenuDelegate
+extension AppDelegate: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        print(#function)
+    }
+
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        print(#function)
     }
 }
 
