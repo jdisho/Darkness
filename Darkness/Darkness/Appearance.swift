@@ -12,7 +12,7 @@ enum Appearance: String {
     case light = "Light"
     case dark = "Dark"
 
-    var script: String {
+    private var script: String {
         return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .some(.dark) ? "true" : "not dark mode")"
     }
 
