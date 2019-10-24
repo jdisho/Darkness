@@ -14,16 +14,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem.button?.title = Appearance.current == .dark ? "☀" : "☾"
+        statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
         statusItem.button?.action = #selector(toggle)
 
         Appearance.didChange = { appearance in
-            self.statusItem.button?.title = appearance == .dark ? "☀" : "☾"
+            self.statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
         }
     }
 
     @objc private func toggle() {
         Appearance.current.toggle()
+    }
+}
+
+private extension String {
+    func toImage() -> NSImage? {
+        return NSImage(named: NSImage.Name(self))
     }
 }
 
