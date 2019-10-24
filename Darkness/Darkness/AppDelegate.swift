@@ -37,12 +37,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let menu = NSMenu()
         menu.delegate = self
+
+        statusItem.menu = menu
     }
 }
 
 // MARK: NSMenuDelegate
 extension AppDelegate: NSMenuDelegate {
+
     func menuWillOpen(_ menu: NSMenu) {
+        if NSEvent.modifierFlags.contains(.option) {
+            toggle()
+            return
+        }
         print(#function)
     }
 
