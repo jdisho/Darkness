@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
         statusItem.button?.action = #selector(toggle)
 
-        let menu = NSMenu()
+        let menu = Menu()
         menu.delegate = self
 
         statusItem.menu = menu
@@ -44,18 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 // MARK: NSMenuDelegate
 extension AppDelegate: NSMenuDelegate {
-
-    func menuWillOpen(_ menu: NSMenu) {
-        if NSEvent.modifierFlags.contains(.option) {
-            toggle()
-            return
-        }
-        print(#function)
-    }
-
-    func menuNeedsUpdate(_ menu: NSMenu) {
-        print(#function)
-    }
+    func menuWillOpen(_ menu: NSMenu) {}
 }
 
 private extension String {
