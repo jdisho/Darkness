@@ -27,13 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
     }
 
-    @objc private func toggle() {
-        Appearance.current.toggle()
-    }
-
     private func configureStatusItem() {
         statusItem.button?.image = (Appearance.current == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
-        statusItem.button?.action = #selector(toggle)
 
         let menu = Menu()
         menu.delegate = self

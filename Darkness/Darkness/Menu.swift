@@ -9,28 +9,39 @@
 import Cocoa
 
 class Menu: NSMenu {
-    init() {
-        super.init(title: "")
 
-        removeAllItems()
-
-        addItem(NSMenuItem(title: "Appearance", action: nil, keyEquivalent: ""))
-
-        let lightMenuItem = NSMenuItem(
+    private lazy var lightMenuItem: NSMenuItem = {
+        let menuItem = NSMenuItem(
             title: "Light",
             action: #selector(activateLightMode),
             keyEquivalent: "L"
         )
-        lightMenuItem.target = self
-        lightMenuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
 
-        let darkMenuItem = NSMenuItem(
+        menuItem.state = Appearance.current == .light ? .on : .off
+        menuItem.target = self
+        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
+
+        return menuItem
+    }()
+
+    private lazy var darkMenuItem: NSMenuItem = {
+        let menuItem = NSMenuItem(
             title: "Dark",
             action: #selector(activateDarkMode),
             keyEquivalent: "D"
         )
-        darkMenuItem.target = self
-        darkMenuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
+
+        menuItem.state = Appearance.current == .dark ? .on : .off
+        menuItem.target = self
+        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
+
+        return menuItem
+    }()
+
+    init() {
+        super.init(title: "")
+
+        addItem(NSMenuItem(title: "Appearance", action: nil, keyEquivalent: ""))
 
         items.append(contentsOf: [lightMenuItem, darkMenuItem])
     }
@@ -41,9 +52,13 @@ class Menu: NSMenu {
 
     @objc private func activateLightMode() {
         Appearance.current = .light
+        lightMenuItem.state = .on
+        darkMenuItem.state = .off
     }
 
     @objc private func activateDarkMode() {
         Appearance.current = .dark
+        lightMenuItem.state = .off
+        darkMenuItem.state = .on
     }
 }
