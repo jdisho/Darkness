@@ -18,7 +18,7 @@ enum Appearance: String {
 
     static var mode: Appearance {
         get {
-            UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == Appearance.dark.rawValue ? .dark : .light
+            UserDefaults.appleInterfaceStyle == Appearance.dark.rawValue ? .dark : .light
         }
         set {
             set(mode: newValue)
@@ -26,13 +26,21 @@ enum Appearance: String {
     }
 
     private static func set(mode: Appearance) {
-        var error: NSDictionary?
         guard let appleScript = NSAppleScript(source: mode.script) else { return }
-        if let output = appleScript.executeAndReturnError(&error).stringValue {
-            print(output)
-        } else if let error = error {
+
+        var error: NSDictionary?
+
+        appleScript.executeAndReturnError(&error)
+
+        if let error = error {
             print("Error: \(error)")
         }
+    }
+}
+
+private extension UserDefaults {
+    static var appleInterfaceStyle: String? {
+        return standard.string(forKey: "AppleInterfaceStyle")
     }
 }
 
