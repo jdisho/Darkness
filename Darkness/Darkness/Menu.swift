@@ -51,7 +51,7 @@ class Menu: NSMenu {
     init() {
         super.init(title: "")
 
-        addItem(NSMenuItem(title: "Appearance", action: nil, keyEquivalent: ""))
+        addItem(NSMenuItem(title: "Manually", action: nil, keyEquivalent: ""))
 
         items.append(contentsOf: [
             lightMenuItem,
