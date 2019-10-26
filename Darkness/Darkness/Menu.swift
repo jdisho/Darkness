@@ -14,12 +14,11 @@ class Menu: NSMenu {
         let menuItem = NSMenuItem(
             title: "Light",
             action: #selector(activateLightMode),
-            keyEquivalent: "L"
+            keyEquivalent: ""
         )
 
         menuItem.state = Appearance.current == .light ? .on : .off
         menuItem.target = self
-        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
 
         return menuItem
     }()
@@ -28,12 +27,11 @@ class Menu: NSMenu {
         let menuItem = NSMenuItem(
             title: "Dark",
             action: #selector(activateDarkMode),
-            keyEquivalent: "D"
+            keyEquivalent: ""
         )
 
         menuItem.state = Appearance.current == .dark ? .on : .off
         menuItem.target = self
-        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
 
         return menuItem
     }()
@@ -42,11 +40,10 @@ class Menu: NSMenu {
         let menuItem = NSMenuItem(
             title: "Quit",
             action: #selector(quitDarkness),
-            keyEquivalent: "Q"
+            keyEquivalent: ""
         )
 
         menuItem.target = self
-        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags(arrayLiteral: [.shift, .option])
 
         return menuItem
     }()
