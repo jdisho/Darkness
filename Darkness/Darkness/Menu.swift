@@ -17,7 +17,7 @@ class Menu: NSMenu {
             keyEquivalent: ""
         )
 
-        menuItem.state = Appearance.current == .light ? .on : .off
+        menuItem.state = Appearance.shared.mode == .light ? .on : .off
         menuItem.target = self
 
         return menuItem
@@ -30,7 +30,7 @@ class Menu: NSMenu {
             keyEquivalent: ""
         )
 
-        menuItem.state = Appearance.current == .dark ? .on : .off
+        menuItem.state = Appearance.shared.mode == .dark ? .on : .off
         menuItem.target = self
 
         return menuItem
@@ -67,13 +67,13 @@ class Menu: NSMenu {
     }
 
     @objc private func activateLightMode() {
-        Appearance.current = .light
+        Appearance.shared.mode = .light
         lightMenuItem.state = .on
         darkMenuItem.state = .off
     }
 
     @objc private func activateDarkMode() {
-        Appearance.current = .dark
+        Appearance.shared.mode = .dark
         lightMenuItem.state = .off
         darkMenuItem.state = .on
     }
