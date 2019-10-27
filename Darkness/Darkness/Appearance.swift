@@ -8,36 +8,35 @@
 
 import Foundation
 
-enum Appearance: String {
-    case light = "Light"
-    case dark = "Dark"
+class Appearance {
+    enum Mode: String {
+        case light = "Light"
+        case dark = "Dark"
 
-    private var script: String {
-        return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .some(.dark))"
+        var script: String {
+            return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .some(.dark))"
+        }
     }
 
-    static var current: Appearance {
+    private let observableMode = Observable<Mode>(UserDefaults.appleInterfaceStyle)
+
+    static let shared = Appearance()
+
+    var mode: Mode {
         get {
-            UserDefaults.appleInterfaceStyle == Appearance.dark.rawValue ? .dark : .light
+            UserDefaults.appleInterfaceStyle
         }
         set {
             set(mode: newValue)
         }
     }
 
-    static var didChange: ((Appearance) -> Void)?
-
-    func toggle() {
-        switch Appearance.current {
-        case .dark:
-            Appearance.current = .light
-        case .light:
-            Appearance.current = .dark
-        }
-        Appearance.didChange?(.current)
+    func observe(_ observer: @escaping ((Mode) -> Void)) {
+        let observation = Observation<Mode>(observer: observer)
+        observableMode.observe(observation)
     }
 
-    private static func set(mode: Appearance) {
+    private func set(mode: Mode) {
         guard let appleScript = NSAppleScript(source: mode.script) else { return }
 
         var error: NSDictionary?
@@ -47,12 +46,14 @@ enum Appearance: String {
         if let error = error {
             print("Error: \(error)")
         }
+
+        observableMode.value = mode
     }
 }
 
 private extension UserDefaults {
-    static var appleInterfaceStyle: String? {
-        return standard.string(forKey: "AppleInterfaceStyle")
+    static var appleInterfaceStyle: Appearance.Mode {
+        return standard.string(forKey: "AppleInterfaceStyle") == Appearance.Mode.dark.rawValue ? .dark : .light
     }
 }
 

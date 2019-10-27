@@ -13,6 +13,7 @@
 		C0ED0ABF23590B9400A20B2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0ABE23590B9400A20B2B /* ViewController.swift */; };
 		C0ED0AC123590B9500A20B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC023590B9500A20B2B /* Assets.xcassets */; };
 		C0ED0AC423590B9500A20B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC223590B9500A20B2B /* Main.storyboard */; };
+		C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBD0B42365A1AA0057AAFF /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C0ED0AC323590B9500A20B2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0ED0AC523590B9500A20B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0ED0AC623590B9500A20B2B /* Darkness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Darkness.entitlements; sourceTree = "<group>"; };
+		C0FBD0B42365A1AA0057AAFF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */,
+				C0FBD0B42365A1AA0057AAFF /* Observable.swift */,
 				C086E9A92361E20200BD4FA9 /* Menu.swift */,
 				C0ED0ABE23590B9400A20B2B /* ViewController.swift */,
 				C0BF171E235F3FEC00521919 /* Appearance.swift */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0ED0ABF23590B9400A20B2B /* ViewController.swift in Sources */,
+				C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */,
 				C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */,
 				C086E9AA2361E20200BD4FA9 /* Menu.swift in Sources */,
 				C0ED0ABD23590B9400A20B2B /* AppDelegate.swift in Sources */,
