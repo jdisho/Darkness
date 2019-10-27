@@ -15,12 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         configureStatusItem()
-
-        UserDefaults.standard.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: .new, context: nil)
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        statusItem.button?.image = (Appearance.shared.mode == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
     }
 
     private func configureStatusItem() {

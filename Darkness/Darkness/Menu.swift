@@ -10,27 +10,28 @@ import Cocoa
 
 class Menu: NSMenu {
 
-    private lazy var lightMenuItem: NSMenuItem = {
+    private lazy var infoMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
-            title: "Light",
-            action: #selector(activateLightMode),
+            title: "",
+            action: nil,
             keyEquivalent: ""
         )
 
-        menuItem.state = Appearance.shared.mode == .light ? .on : .off
-        menuItem.target = self
+        Appearance.shared.observe { mode in
+            menuItem.title = "Dark Mode: \(mode == .dark ? "Enabled" : "Disabled")"
+        }
 
         return menuItem
     }()
 
-    private lazy var darkMenuItem: NSMenuItem = {
+
+    private lazy var darkModeMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
-            title: "Dark",
-            action: #selector(activateDarkMode),
+            title: "Toggle Dark Mode",
+            action: #selector(toggleAppearance),
             keyEquivalent: ""
         )
 
-        menuItem.state = Appearance.shared.mode == .dark ? .on : .off
         menuItem.target = self
 
         return menuItem
@@ -51,11 +52,9 @@ class Menu: NSMenu {
     init() {
         super.init(title: "")
 
-        addItem(NSMenuItem(title: "Manually", action: nil, keyEquivalent: ""))
-
         items.append(contentsOf: [
-            lightMenuItem,
-            darkMenuItem,
+            infoMenuItem,
+            darkModeMenuItem,
             NSMenuItem.separator(),
             quitMenuItem
             ]
@@ -66,16 +65,8 @@ class Menu: NSMenu {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc private func activateLightMode() {
-        Appearance.shared.mode = .light
-        lightMenuItem.state = .on
-        darkMenuItem.state = .off
-    }
-
-    @objc private func activateDarkMode() {
-        Appearance.shared.mode = .dark
-        lightMenuItem.state = .off
-        darkMenuItem.state = .on
+    @objc private func toggleAppearance() {
+        Appearance.shared.toggle()
     }
 
     @objc private func quitDarkness() {
