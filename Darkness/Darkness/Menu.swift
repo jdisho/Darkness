@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HotKey
 
 class Menu: NSMenu {
 
@@ -29,10 +30,11 @@ class Menu: NSMenu {
         let menuItem = NSMenuItem(
             title: "Toggle Dark Mode",
             action: #selector(toggleAppearance),
-            keyEquivalent: ""
+            keyEquivalent: "D"
         )
 
         menuItem.target = self
+        menuItem.keyEquivalentModifierMask = [.shift, .option, .command]
 
         return menuItem
     }()
@@ -59,6 +61,10 @@ class Menu: NSMenu {
             quitMenuItem
             ]
         )
+
+        toggleDarkModeKeyCombo.handleKeyDown { [weak self] in
+            self?.toggleAppearance()
+        }
     }
 
     required init(coder: NSCoder) {
@@ -71,5 +77,20 @@ class Menu: NSMenu {
 
     @objc private func quitDarkness() {
         NSApplication.shared.terminate(self)
+    }
+}
+
+private extension Menu {
+    var toggleDarkModeKeyCombo: HotKey {
+        return HotKey(key: .d, modifiers: [.shift, .option, .command])
+    }
+}
+
+private extension HotKey {
+    func handleKeyDown(_ handler: @escaping (() -> Void)) {
+        keyDownHandler = {
+            handler()
+            self.handleKeyDown(handler)
+        }
     }
 }
