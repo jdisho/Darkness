@@ -12,10 +12,6 @@ class Appearance: NSObject {
     enum Mode: String {
         case light = "Light"
         case dark = "Dark"
-
-        var script: String {
-            return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .some(.dark))"
-        }
     }
 
     private let observableMode = Observable<Mode>(UserDefaults.standard.appleInterfaceStyle)
@@ -27,14 +23,13 @@ class Appearance: NSObject {
             UserDefaults.standard.appleInterfaceStyle
         }
         set {
-            UserDefaults.standard.internalInterfaceStyleString = newValue.rawValue
+            UserDefaults.standard.internalInterfaceStyle = newValue
             set(mode: newValue)
         }
     }
 
     override init() {
         super.init()
-
         UserDefaults.standard.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: .new, context: nil)
     }
 
@@ -57,9 +52,9 @@ class Appearance: NSObject {
         guard let userDefaults = object as? UserDefaults else { return }
         let mode: Mode = userDefaults.value(forKey: keyPath) as? String == self.mode.rawValue ? .dark : .light
 
-        if UserDefaults.standard.internalInterfaceStyleString != mode.rawValue {
+        if UserDefaults.standard.internalInterfaceStyle != mode {
             observableMode.value = mode
-            UserDefaults.standard.internalInterfaceStyleString = ""
+            UserDefaults.standard.internalInterfaceStyle = nil
         }
     }
 
@@ -78,21 +73,29 @@ class Appearance: NSObject {
     }
 }
 
+private extension Appearance.Mode {
+    var script: String {
+        return "tell application \"System Events\" to tell appearance preferences to set dark mode to \(self == .dark)"
+    }
+}
+
 private extension UserDefaults {
     var appleInterfaceStyle: Appearance.Mode {
         return string(forKey: "AppleInterfaceStyle") == Appearance.Mode.dark.rawValue ? .dark : .light
     }
 
-    var internalInterfaceStylekey: String {
+    private var internalInterfaceStylekey: String {
         return "com.disho.Darkness.InternalInterfaceStyle"
     }
 
-    var internalInterfaceStyleString: String? {
+    // I am using this property to distingush if the macOS apperance is changed within the app or from the system settings.
+    var internalInterfaceStyle: Appearance.Mode? {
         get {
-            string(forKey: internalInterfaceStylekey)
+            guard let styleString = string(forKey: internalInterfaceStylekey) else { return nil }
+            return styleString == Appearance.Mode.dark.rawValue ? .dark : .light
         }
         set {
-            set(newValue, forKey: internalInterfaceStylekey)
+            set(newValue?.rawValue, forKey: internalInterfaceStylekey)
         }
     }
 }
