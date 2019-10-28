@@ -18,19 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func configureStatusItem() {
-        let menu = Menu()
-        menu.delegate = self
-        statusItem.menu = menu
+        statusItem.menu = Menu()
 
         Appearance.shared.observe { appearance in
             self.statusItem.button?.image = (Appearance.shared.mode == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
         }
     }
-}
-
-// MARK: NSMenuDelegate
-extension AppDelegate: NSMenuDelegate {
-    func menuWillOpen(_ menu: NSMenu) {}
 }
 
 private extension String {

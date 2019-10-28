@@ -25,7 +25,6 @@ class Menu: NSMenu {
         return menuItem
     }()
 
-
     private lazy var darkModeMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
             title: "Toggle Dark Mode",
@@ -35,6 +34,10 @@ class Menu: NSMenu {
 
         menuItem.target = self
         menuItem.keyEquivalentModifierMask = [.shift, .option, .command]
+
+        HotKey.toggleDarkModeKeyCombo.handleKeyDown { [weak self] in
+            self?.toggleAppearance()
+        }
 
         return menuItem
     }()
@@ -54,6 +57,8 @@ class Menu: NSMenu {
     init() {
         super.init(title: "")
 
+        delegate = self
+
         items.append(contentsOf: [
             infoMenuItem,
             darkModeMenuItem,
@@ -61,10 +66,6 @@ class Menu: NSMenu {
             quitMenuItem
             ]
         )
-
-        toggleDarkModeKeyCombo.handleKeyDown { [weak self] in
-            self?.toggleAppearance()
-        }
     }
 
     required init(coder: NSCoder) {
@@ -80,13 +81,20 @@ class Menu: NSMenu {
     }
 }
 
-private extension Menu {
-    var toggleDarkModeKeyCombo: HotKey {
-        return HotKey(key: .d, modifiers: [.shift, .option, .command])
+// MARK: NSMenuDelegate
+extension Menu: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        HotKey.toggleDarkModeKeyCombo.isPaused = true
+    }
+
+    func menuDidClose(_ menu: NSMenu) {
+        HotKey.toggleDarkModeKeyCombo.isPaused = false
     }
 }
 
 private extension HotKey {
+    static let toggleDarkModeKeyCombo = HotKey(key: .d, modifiers: [.shift, .option, .command])
+
     func handleKeyDown(_ handler: @escaping (() -> Void)) {
         keyDownHandler = {
             handler()
