@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HotKey
 
 class Menu: NSMenu {
 
@@ -24,15 +25,19 @@ class Menu: NSMenu {
         return menuItem
     }()
 
-
     private lazy var darkModeMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
             title: "Toggle Dark Mode",
             action: #selector(toggleAppearance),
-            keyEquivalent: ""
+            keyEquivalent: "D"
         )
 
         menuItem.target = self
+        menuItem.keyEquivalentModifierMask = [.shift, .option, .command]
+
+        HotKey.toggleDarkModeKeyCombo.handleKeyDown { [weak self] in
+            self?.toggleAppearance()
+        }
 
         return menuItem
     }()
@@ -51,6 +56,8 @@ class Menu: NSMenu {
 
     init() {
         super.init(title: "")
+
+        delegate = self
 
         items.append(contentsOf: [
             infoMenuItem,
@@ -71,5 +78,27 @@ class Menu: NSMenu {
 
     @objc private func quitDarkness() {
         NSApplication.shared.terminate(self)
+    }
+}
+
+// MARK: NSMenuDelegate
+extension Menu: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        HotKey.toggleDarkModeKeyCombo.isPaused = true
+    }
+
+    func menuDidClose(_ menu: NSMenu) {
+        HotKey.toggleDarkModeKeyCombo.isPaused = false
+    }
+}
+
+private extension HotKey {
+    static let toggleDarkModeKeyCombo = HotKey(key: .d, modifiers: [.shift, .option, .command])
+
+    func handleKeyDown(_ handler: @escaping (() -> Void)) {
+        keyDownHandler = {
+            handler()
+            self.handleKeyDown(handler)
+        }
     }
 }
