@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		555D2D5D614866E53019CB90 /* Pods_Darkness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9B974A13805F95473920E1 /* Pods_Darkness.framework */; };
+		C01B48B52369B6B500477C03 /* ScreenBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B48B42369B6B500477C03 /* ScreenBrightness.swift */; };
+		C01B48B72369B89100477C03 /* NSScreen+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B48B62369B89100477C03 /* NSScreen+Brightness.swift */; };
 		C086E9AA2361E20200BD4FA9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E9A92361E20200BD4FA9 /* Menu.swift */; };
 		C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF171E235F3FEC00521919 /* Appearance.swift */; };
 		C0ED0ABD23590B9400A20B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		0D5C2181DDEC0FD9F43AFC62 /* Pods-Darkness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkness.debug.xcconfig"; path = "Target Support Files/Pods-Darkness/Pods-Darkness.debug.xcconfig"; sourceTree = "<group>"; };
 		A6584E91867B0CD4B31DFC61 /* Pods-Darkness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darkness.release.xcconfig"; path = "Target Support Files/Pods-Darkness/Pods-Darkness.release.xcconfig"; sourceTree = "<group>"; };
+		C01B48B42369B6B500477C03 /* ScreenBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBrightness.swift; sourceTree = "<group>"; };
+		C01B48B62369B89100477C03 /* NSScreen+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Brightness.swift"; sourceTree = "<group>"; };
 		C086E9A92361E20200BD4FA9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C0BF171E235F3FEC00521919 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		C0ED0AB923590B9400A20B2B /* Darkness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darkness.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +63,6 @@
 				0D5C2181DDEC0FD9F43AFC62 /* Pods-Darkness.debug.xcconfig */,
 				A6584E91867B0CD4B31DFC61 /* Pods-Darkness.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +92,8 @@
 				C086E9A92361E20200BD4FA9 /* Menu.swift */,
 				C0ED0ABE23590B9400A20B2B /* ViewController.swift */,
 				C0BF171E235F3FEC00521919 /* Appearance.swift */,
+				C01B48B42369B6B500477C03 /* ScreenBrightness.swift */,
+				C01B48B62369B89100477C03 /* NSScreen+Brightness.swift */,
 				C0ED0AC023590B9500A20B2B /* Assets.xcassets */,
 				C0ED0AC223590B9500A20B2B /* Main.storyboard */,
 				C0ED0AC523590B9500A20B2B /* Info.plist */,
@@ -214,7 +219,9 @@
 				C0ED0ABF23590B9400A20B2B /* ViewController.swift in Sources */,
 				C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */,
 				C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */,
+				C01B48B72369B89100477C03 /* NSScreen+Brightness.swift in Sources */,
 				C086E9AA2361E20200BD4FA9 /* Menu.swift in Sources */,
+				C01B48B52369B6B500477C03 /* ScreenBrightness.swift in Sources */,
 				C0ED0ABD23590B9400A20B2B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
