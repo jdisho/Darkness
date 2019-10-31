@@ -22,20 +22,23 @@ class ScreenBrightness {
     }
 
     private lazy var oldBrightnessLevel = NSScreen.currentBrightnessLevel
+    /// Observe the screen brightness every a 1 second.
+    func observe(_ observer: @escaping ((Float) -> Void)) {
+        startObserving()
+        let observation = Observation(observer: observer)
+        observableBrightnessLevel.observe(observation)
+    }
 
-    /// Observe the screen brightness every a given second.
-    func observe(every timeInterval: TimeInterval, _ observer: @escaping ((Float) -> Void)) {
+    func startObserving() {
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(
-                timeInterval: timeInterval,
+                timeInterval: 1.0,
                 target: self,
                 selector: #selector(self.updateBrightnessLevel),
                 userInfo: nil,
                 repeats: true
             )
         }
-        let observation = Observation(observer: observer)
-        observableBrightnessLevel.observe(observation)
     }
 
     func stopObserving() {
