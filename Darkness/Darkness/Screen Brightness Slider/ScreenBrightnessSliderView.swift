@@ -31,7 +31,7 @@ class ScreenBrightnessSliderView: NSView {
 
     @IBOutlet private var descriptionTextField: NSTextField! {
         didSet {
-            descriptionTextField.stringValue = updatedDescription(brightnessLevel: Int(UserDefaults.standard.brightnessThreshold))
+            descriptionTextField.stringValue = updatedDescription(threshold: Int(UserDefaults.standard.brightnessThreshold))
             descriptionTextField.textColor = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .labelColor : .secondaryLabelColor
         }
     }
@@ -59,13 +59,13 @@ class ScreenBrightnessSliderView: NSView {
         // Immediataly observe brightness changes when the slider value changes.
         ScreenBrightness.shared.startObserving()
         UserDefaults.standard.brightnessThreshold = sender.floatValue.rounded()
-        descriptionTextField.stringValue = updatedDescription(brightnessLevel: Int(sender.intValue))
+        descriptionTextField.stringValue = updatedDescription(threshold: Int(sender.intValue))
     }
 
-    private func updatedDescription(brightnessLevel: Int) -> String {
+    private func updatedDescription(threshold: Int) -> String {
         return """
         The knob represents the brightness threshold.
-        Dark mode will be switched on \(brightnessLevel)% brightness or less.
+        Dark mode will be switched on \(threshold)% brightness or less.
         """
     }
 }
