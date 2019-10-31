@@ -9,6 +9,7 @@
 import Cocoa
 import HotKey
 
+
 class Menu: NSMenu {
 
     private lazy var infoMenuItem: NSMenuItem = {
@@ -17,6 +18,8 @@ class Menu: NSMenu {
             action: nil,
             keyEquivalent: ""
         )
+
+        menuItem.target = self
 
         Appearance.shared.observe { mode in
             menuItem.title = "Dark Mode: \(mode == .dark ? "Enabled" : "Disabled")"
@@ -42,6 +45,12 @@ class Menu: NSMenu {
         return menuItem
     }()
 
+    private lazy var brightnessMenuItem: NSMenuItem = {
+        let menuItem = NSMenuItem()
+        menuItem.view = ScreenBrightnessSliderView.loadFromNib()
+        return menuItem
+    }()
+
     private lazy var quitMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
             title: "Quit",
@@ -56,12 +65,15 @@ class Menu: NSMenu {
 
     init() {
         super.init(title: "")
-
+ 
         delegate = self
 
         items.append(contentsOf: [
             infoMenuItem,
+            NSMenuItem.separator(),
             darkModeMenuItem,
+            NSMenuItem.separator(),
+            brightnessMenuItem,
             NSMenuItem.separator(),
             quitMenuItem
             ]
@@ -74,6 +86,7 @@ class Menu: NSMenu {
 
     @objc private func toggleAppearance() {
         Appearance.shared.toggle()
+        (brightnessMenuItem.view as? ScreenBrightnessSliderView)?.disableAutomaticSwitch()
     }
 
     @objc private func quitDarkness() {

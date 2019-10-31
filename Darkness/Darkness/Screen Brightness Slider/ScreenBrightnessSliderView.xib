@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="ScreenBrightnessSliderView" customModule="Darkness" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="69"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZ8-s9-zpO">
+                    <rect key="frame" x="20" y="0.0" width="289" height="47"/>
+                    <subviews>
+                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aei-zo-pez">
+                            <rect key="frame" x="-2" y="30" width="293" height="19"/>
+                            <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Acr-ng-Y7y"/>
+                            <connections>
+                                <action selector="changeSliderValue:" target="c22-O7-iKe" id="b3b-mD-fZP"/>
+                            </connections>
+                        </slider>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-5h-Fgv">
+                            <rect key="frame" x="-2" y="0.0" width="293" height="28"/>
+                            <textFieldCell key="cell" selectable="YES" alignment="left" title="The knob represents the brightness threshold. Dark mode will be switched on 25% brightness or less." id="F2O-JB-Q68">
+                                <font key="font" metaFont="label" size="11"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KWM-fU-4T5">
+                    <rect key="frame" x="18" y="53" width="293" height="18"/>
+                    <buttonCell key="cell" type="check" title="Automatically based on screen brightness" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="RwW-9t-gEU">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="menu" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectCheckmarkButton:" target="c22-O7-iKe" id="Wdn-Hc-PoD"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="EZ8-s9-zpO" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="7cL-5T-iJv"/>
+                <constraint firstAttribute="bottom" secondItem="EZ8-s9-zpO" secondAttribute="bottom" id="H79-MP-ioS"/>
+                <constraint firstItem="EZ8-s9-zpO" firstAttribute="top" secondItem="KWM-fU-4T5" secondAttribute="bottom" constant="8" id="PHt-8q-qN4"/>
+                <constraint firstItem="KWM-fU-4T5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="erX-yw-Tu6"/>
+                <constraint firstAttribute="trailing" secondItem="EZ8-s9-zpO" secondAttribute="trailing" constant="20" id="ett-ke-MKH"/>
+                <constraint firstItem="KWM-fU-4T5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="nYd-Io-EWs"/>
+                <constraint firstAttribute="trailing" secondItem="KWM-fU-4T5" secondAttribute="trailing" constant="20" id="q3k-if-iMT"/>
+            </constraints>
+            <connections>
+                <outlet property="checkmarkButton" destination="KWM-fU-4T5" id="git-GF-dXD"/>
+                <outlet property="descriptionTextField" destination="0JM-5h-Fgv" id="2S0-yj-Mrm"/>
+                <outlet property="slider" destination="aei-zo-pez" id="VnF-am-3a1"/>
+            </connections>
+            <point key="canvasLocation" x="129" y="7"/>
+        </customView>
+    </objects>
+</document>
