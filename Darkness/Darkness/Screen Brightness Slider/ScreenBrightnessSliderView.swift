@@ -14,7 +14,6 @@ class ScreenBrightnessSliderView: NSView {
     @IBOutlet private var checkmarkButton: NSButton! {
         didSet {
             checkmarkButton.state = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .on : .off
-
             ScreenBrightness.shared.observe { level in
                 if UserDefaults.standard.isAutomaticOnBrightnessSelected {
                     Appearance.shared.mode = (level < UserDefaults.standard.brightnessThreshold / 100.0) ? .dark : .light
@@ -37,18 +36,28 @@ class ScreenBrightnessSliderView: NSView {
         }
     }
 
-    @IBAction func selectCheckmarkButton(_ sender: NSButton) {
+    func disableAutomaticSwitch() {
+        ScreenBrightness.shared.stopObserving()
+        UserDefaults.standard.isAutomaticOnBrightnessSelected  = false
+        checkmarkButton.state = .off
+        slider.isEnabled = false
+        descriptionTextField.textColor = .secondaryLabelColor
+    }
+
+    @IBAction private func selectCheckmarkButton(_ sender: NSButton) {
         UserDefaults.standard.isAutomaticOnBrightnessSelected = sender.state == .on
         slider.isEnabled = sender.state == .on
         descriptionTextField.textColor = sender.state == .on ? .labelColor : .secondaryLabelColor
         if sender.state == .on  {
-             ScreenBrightness.shared.startObserving()
+            ScreenBrightness.shared.startObserving()
         } else {
             ScreenBrightness.shared.stopObserving()
         }
     }
 
-    @IBAction func changeSliderValue(_ sender: NSSlider) {
+    @IBAction private func changeSliderValue(_ sender: NSSlider) {
+        // Immediataly observe brightness changes when the slider value changes.
+        ScreenBrightness.shared.startObserving()
         UserDefaults.standard.brightnessThreshold = sender.floatValue.rounded()
         descriptionTextField.stringValue = updatedDescription(brightnessLevel: Int(sender.intValue))
     }

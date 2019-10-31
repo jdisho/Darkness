@@ -15,6 +15,7 @@ class ScreenBrightness {
     static let shared = ScreenBrightness()
 
     private let observableBrightnessLevel = Observable<Float>(NSScreen.currentBrightnessLevel)
+    private lazy var oldBrightnessLevel = NSScreen.currentBrightnessLevel
     private var timer: Timer? = nil {
         willSet {
             timer?.invalidate()
@@ -39,6 +40,7 @@ class ScreenBrightness {
                 repeats: true
             )
         }
+        observableBrightnessLevel.value = NSScreen.currentBrightnessLevel
     }
 
     func stopObserving() {
@@ -46,6 +48,9 @@ class ScreenBrightness {
     }
 
     @objc private func updateBrightnessLevel(){
-        observableBrightnessLevel.value = NSScreen.currentBrightnessLevel
+        if oldBrightnessLevel != NSScreen.currentBrightnessLevel {
+            observableBrightnessLevel.value = NSScreen.currentBrightnessLevel
+            oldBrightnessLevel = NSScreen.currentBrightnessLevel
+        }
     }
 }
