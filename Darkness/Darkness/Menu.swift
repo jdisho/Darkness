@@ -9,18 +9,22 @@
 import Cocoa
 import HotKey
 
+
 class Menu: NSMenu {
+
 
     private lazy var infoMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
-            title: "",
+            title: "JOAN",
             action: nil,
             keyEquivalent: ""
         )
 
-        Appearance.shared.observe { mode in
-            menuItem.title = "Dark Mode: \(mode == .dark ? "Enabled" : "Disabled")"
-        }
+        menuItem.target = self
+
+//        Appearance.shared.observe { mode in
+//            menuItem.title = "Dark Mode: \(mode == .dark ? "Enabled" : "Disabled")"
+//        }
 
         return menuItem
     }()
@@ -56,16 +60,19 @@ class Menu: NSMenu {
 
     init() {
         super.init(title: "")
-
+ 
         delegate = self
 
         items.append(contentsOf: [
-            infoMenuItem,
             darkModeMenuItem,
+            NSMenuItem.separator(),
+            infoMenuItem,
             NSMenuItem.separator(),
             quitMenuItem
             ]
         )
+
+        infoMenuItem.view = ScreenBrightnessSliderView.loadFromNib()
     }
 
     required init(coder: NSCoder) {
