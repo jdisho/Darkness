@@ -22,7 +22,7 @@
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-5h-Fgv">
                             <rect key="frame" x="-2" y="0.0" width="293" height="28"/>
                             <textFieldCell key="cell" selectable="YES" alignment="left" title="The knob represents the brightness threshold. Dark mode will be switched on 25% brightness or less." id="F2O-JB-Q68">
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="menu" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -43,6 +43,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu" size="14"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="selectCheckmarkButton:" target="c22-O7-iKe" id="Wdn-Hc-PoD"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -55,11 +58,11 @@
                 <constraint firstAttribute="trailing" secondItem="KWM-fU-4T5" secondAttribute="trailing" constant="20" id="q3k-if-iMT"/>
             </constraints>
             <connections>
-                <outlet property="checkmarkButton" destination="KWM-fU-4T5" id="WLp-eI-c9d"/>
+                <outlet property="checkmarkButton" destination="KWM-fU-4T5" id="git-GF-dXD"/>
                 <outlet property="descriptionTextField" destination="0JM-5h-Fgv" id="2S0-yj-Mrm"/>
                 <outlet property="slider" destination="aei-zo-pez" id="VnF-am-3a1"/>
             </connections>
-            <point key="canvasLocation" x="128.5" y="-164.5"/>
+            <point key="canvasLocation" x="129" y="7"/>
         </customView>
     </objects>
 </document>
