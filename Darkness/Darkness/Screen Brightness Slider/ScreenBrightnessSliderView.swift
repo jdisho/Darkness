@@ -11,4 +11,7 @@ import AppKit
 
 class ScreenBrightnessSliderView: NSView {
 
+    @IBOutlet private var checkmarkButton: NSButton!
+    @IBOutlet private var slider: NSSlider!
+    @IBOutlet private var descriptionTextField: NSTextField!
 }
