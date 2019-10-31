@@ -15,8 +15,8 @@ class ScreenBrightnessSliderView: NSView {
         didSet {
             checkmarkButton.state = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .on : .off
 
-            if checkmarkButton.state == .on {
-                ScreenBrightness.shared.observe { level in
+            ScreenBrightness.shared.observe { level in
+                if UserDefaults.standard.isAutomaticOnBrightnessSelected {
                     Appearance.shared.mode = (level < UserDefaults.standard.brightnessThreshold / 100.0) ? .dark : .light
                 }
             }
@@ -41,7 +41,11 @@ class ScreenBrightnessSliderView: NSView {
         UserDefaults.standard.isAutomaticOnBrightnessSelected = sender.state == .on
         slider.isEnabled = sender.state == .on
         descriptionTextField.textColor = sender.state == .on ? .labelColor : .secondaryLabelColor
-        sender.state == .on ? ScreenBrightness.shared.startObserving() : ScreenBrightness.shared.stopObserving()
+        if sender.state == .on  {
+             ScreenBrightness.shared.startObserving()
+        } else {
+            ScreenBrightness.shared.stopObserving()
+        }
     }
 
     @IBAction func changeSliderValue(_ sender: NSSlider) {
