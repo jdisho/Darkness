@@ -18,11 +18,14 @@
                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aei-zo-pez">
                             <rect key="frame" x="-2" y="30" width="293" height="19"/>
                             <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Acr-ng-Y7y"/>
+                            <connections>
+                                <action selector="changeSliderValue:" target="c22-O7-iKe" id="b3b-mD-fZP"/>
+                            </connections>
                         </slider>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-5h-Fgv">
                             <rect key="frame" x="-2" y="0.0" width="293" height="28"/>
                             <textFieldCell key="cell" selectable="YES" alignment="left" title="The knob represents the brightness threshold. Dark mode will be switched on 25% brightness or less." id="F2O-JB-Q68">
-                                <font key="font" metaFont="menu" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>

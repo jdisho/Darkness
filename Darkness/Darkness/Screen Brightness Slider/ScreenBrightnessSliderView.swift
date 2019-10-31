@@ -19,12 +19,14 @@ class ScreenBrightnessSliderView: NSView {
 
     @IBOutlet private var slider: NSSlider! {
         didSet {
+            slider.floatValue = UserDefaults.standard.brightnessThreshold
             slider.isEnabled = UserDefaults.standard.isAutomaticOnBrightnessSelected
         }
     }
 
     @IBOutlet private var descriptionTextField: NSTextField! {
         didSet {
+            descriptionTextField.stringValue = updatedDescription(brightnessLevel: Int(UserDefaults.standard.brightnessThreshold))
             descriptionTextField.textColor = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .labelColor : .secondaryLabelColor
         }
     }
@@ -33,6 +35,18 @@ class ScreenBrightnessSliderView: NSView {
         UserDefaults.standard.isAutomaticOnBrightnessSelected = sender.state == .on
         slider.isEnabled = sender.state == .on
         descriptionTextField.textColor = sender.state == .on ? .labelColor : .secondaryLabelColor
+    }
+
+    @IBAction func changeSliderValue(_ sender: NSSlider) {
+        UserDefaults.standard.brightnessThreshold = sender.floatValue.rounded()
+        descriptionTextField.stringValue = updatedDescription(brightnessLevel: Int(sender.intValue))
+    }
+
+    private func updatedDescription(brightnessLevel: Int) -> String {
+        return """
+        The knob represents the brightness threshold.
+        Dark mode will be switched on \(brightnessLevel)% brightness or less.
+        """
     }
 }
 
@@ -47,6 +61,19 @@ private extension UserDefaults {
         }
         set {
             setValue(newValue, forKey: isAutomaticOnBrightnessKey)
+        }
+    }
+
+    private var sliderFloatValueKey: String {
+        return "com.disho.Darkness.sliderFloatValueKey"
+    }
+
+    var brightnessThreshold: Float {
+        get {
+            float(forKey: sliderFloatValueKey)
+        }
+        set {
+            setValue(newValue, forKey: sliderFloatValueKey)
         }
     }
 }
