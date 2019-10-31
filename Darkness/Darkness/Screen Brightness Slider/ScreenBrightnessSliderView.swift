@@ -13,24 +13,40 @@ class ScreenBrightnessSliderView: NSView {
 
     @IBOutlet private var checkmarkButton: NSButton! {
         didSet {
-            checkmarkButton.state = .off
+            checkmarkButton.state = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .on : .off
         }
     }
 
     @IBOutlet private var slider: NSSlider! {
         didSet {
-            slider.isEnabled = checkmarkButton.state == .on
+            slider.isEnabled = UserDefaults.standard.isAutomaticOnBrightnessSelected
         }
     }
 
     @IBOutlet private var descriptionTextField: NSTextField! {
         didSet {
-            descriptionTextField.textColor = checkmarkButton.state == .on ? .labelColor : .secondaryLabelColor
+            descriptionTextField.textColor = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .labelColor : .secondaryLabelColor
         }
     }
 
     @IBAction func selectCheckmarkButton(_ sender: NSButton) {
+        UserDefaults.standard.isAutomaticOnBrightnessSelected = sender.state == .on
         slider.isEnabled = sender.state == .on
         descriptionTextField.textColor = sender.state == .on ? .labelColor : .secondaryLabelColor
+    }
+}
+
+private extension UserDefaults {
+    private var isAutomaticOnBrightnessKey: String {
+        return "com.disho.Darkness.isAutomaticOnBrightnessKey"
+    }
+
+    var isAutomaticOnBrightnessSelected: Bool {
+        get {
+            bool(forKey: isAutomaticOnBrightnessKey)
+        }
+        set {
+            setValue(newValue, forKey: isAutomaticOnBrightnessKey)
+        }
     }
 }
