@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 
 extension NSScreen {
-    static var currentBrightnessLevel: Float {
+    static var brightness: Float {
         var iterator: io_iterator_t = 0
         var level: Float = 0
         if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"), &iterator) == kIOReturnSuccess {
