@@ -17,7 +17,7 @@ class BrightnessSliderView: NSView {
             checkmarkButton.isHighlighted = false
             ScreenBrightness.shared.observe { level in
                 if UserDefaults.standard.isAutomaticOnBrightnessSelected {
-                    Appearance.shared.mode = (level < UserDefaults.standard.brightnessThreshold / 100.0) ? .dark : .light
+                    Appearance.shared.mode = (level < UserDefaults.standard.brightnessThreshold) ? .dark : .light
                 }
             }
         }
@@ -25,6 +25,8 @@ class BrightnessSliderView: NSView {
 
     @IBOutlet private var slider: NSSlider! {
         didSet {
+            slider.minValue = 0.0
+            slider.maxValue = 1.0
             slider.floatValue = UserDefaults.standard.brightnessThreshold
             slider.isEnabled = UserDefaults.standard.isAutomaticOnBrightnessSelected
         }
@@ -32,7 +34,7 @@ class BrightnessSliderView: NSView {
 
     @IBOutlet private var descriptionTextField: NSTextField! {
         didSet {
-            descriptionTextField.stringValue = updatedDescription(threshold: Int(UserDefaults.standard.brightnessThreshold))
+            descriptionTextField.stringValue = updatedDescription(threshold: Int(UserDefaults.standard.brightnessThreshold * 100))
             descriptionTextField.textColor = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .labelColor : .secondaryLabelColor
         }
     }
@@ -57,10 +59,9 @@ class BrightnessSliderView: NSView {
     }
 
     @IBAction private func changeSliderValue(_ sender: NSSlider) {
-        // Immediataly observe brightness changes when the slider value changes.
-        ScreenBrightness.shared.startObserving()
-        UserDefaults.standard.brightnessThreshold = sender.floatValue.rounded()
-        descriptionTextField.stringValue = updatedDescription(threshold: Int(sender.intValue))
+        Appearance.shared.mode = (NSScreen.brightness < sender.floatValue) ? .dark : .light
+        UserDefaults.standard.brightnessThreshold = sender.floatValue
+        descriptionTextField.stringValue = updatedDescription(threshold: Int(sender.floatValue * 100.0))
     }
 
     private func updatedDescription(threshold: Int) -> String {
