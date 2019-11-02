@@ -47,7 +47,7 @@ class Menu: NSMenu {
 
     private lazy var brightnessMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem()
-        menuItem.view = ScreenBrightnessSliderView.loadFromNib()
+        menuItem.view = BrightnessSliderView.loadFromNib()
         return menuItem
     }()
 
@@ -70,7 +70,6 @@ class Menu: NSMenu {
 
         items.append(contentsOf: [
             infoMenuItem,
-            NSMenuItem.separator(),
             darkModeMenuItem,
             NSMenuItem.separator(),
             brightnessMenuItem,
@@ -86,7 +85,7 @@ class Menu: NSMenu {
 
     @objc private func toggleAppearance() {
         Appearance.shared.toggle()
-        (brightnessMenuItem.view as? ScreenBrightnessSliderView)?.disableAutomaticSwitch()
+        (brightnessMenuItem.view as? BrightnessSliderView)?.disableAutomaticSwitch()
     }
 
     @objc private func quitDarkness() {

@@ -1,5 +1,5 @@
 //
-//  ScreenBrightnessSliderView.swift
+//  BrightnessSliderView.swift
 //  Darkness
 //
 //  Created by Joan Disho on 31.10.19.
@@ -9,7 +9,7 @@
 import Cocoa
 import AppKit
 
-class ScreenBrightnessSliderView: NSView {
+class BrightnessSliderView: NSView {
 
     @IBOutlet private var checkmarkButton: NSButton! {
         didSet {

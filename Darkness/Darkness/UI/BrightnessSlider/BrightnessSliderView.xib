@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="ScreenBrightnessSliderView" customModule="Darkness" customModuleProvider="target">
+        <customView id="c22-O7-iKe" customClass="BrightnessSliderView" customModule="Darkness" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="329" height="69"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>

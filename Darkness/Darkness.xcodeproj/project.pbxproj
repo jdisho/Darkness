@@ -16,8 +16,8 @@
 		C0ED0ABD23590B9400A20B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */; };
 		C0ED0AC123590B9500A20B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC023590B9500A20B2B /* Assets.xcassets */; };
 		C0ED0AC423590B9500A20B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC223590B9500A20B2B /* Main.storyboard */; };
-		C0F59165236ADB940000FA4A /* ScreenBrightnessSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F59164236ADB940000FA4A /* ScreenBrightnessSliderView.swift */; };
-		C0F59167236ADBBC0000FA4A /* ScreenBrightnessSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0F59166236ADBBC0000FA4A /* ScreenBrightnessSliderView.xib */; };
+		C0F59165236ADB940000FA4A /* BrightnessSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F59164236ADB940000FA4A /* BrightnessSliderView.swift */; };
+		C0F59167236ADBBC0000FA4A /* BrightnessSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0F59166236ADBBC0000FA4A /* BrightnessSliderView.xib */; };
 		C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBD0B42365A1AA0057AAFF /* Observable.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 		C0ED0AC323590B9500A20B2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0ED0AC523590B9500A20B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0ED0AC623590B9500A20B2B /* Darkness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Darkness.entitlements; sourceTree = "<group>"; };
-		C0F59164236ADB940000FA4A /* ScreenBrightnessSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBrightnessSliderView.swift; sourceTree = "<group>"; };
-		C0F59166236ADBBC0000FA4A /* ScreenBrightnessSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenBrightnessSliderView.xib; sourceTree = "<group>"; };
+		C0F59164236ADB940000FA4A /* BrightnessSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessSliderView.swift; sourceTree = "<group>"; };
+		C0F59166236ADBBC0000FA4A /* BrightnessSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrightnessSliderView.xib; sourceTree = "<group>"; };
 		C0FBD0B42365A1AA0057AAFF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		FC9B974A13805F95473920E1 /* Pods_Darkness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Darkness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -70,6 +70,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C08641E9236E08F200286953 /* BrightnessSlider */ = {
+			isa = PBXGroup;
+			children = (
+				C0F59164236ADB940000FA4A /* BrightnessSliderView.swift */,
+				C0F59166236ADBBC0000FA4A /* BrightnessSliderView.xib */,
+			);
+			path = BrightnessSlider;
+			sourceTree = "<group>";
+		};
 		C0ED0AB023590B9400A20B2B = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +100,9 @@
 		C0ED0ABB23590B9400A20B2B /* Darkness */ = {
 			isa = PBXGroup;
 			children = (
-				C0F59163236ADB050000FA4A /* Screen Brightness Slider */,
+				C0F59163236ADB050000FA4A /* UI */,
 				C0F59162236AD8C30000FA4A /* Helpers */,
 				C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */,
-				C086E9A92361E20200BD4FA9 /* Menu.swift */,
 				C0ED0AC023590B9500A20B2B /* Assets.xcassets */,
 				C0ED0AC223590B9500A20B2B /* Main.storyboard */,
 				C0ED0AC523590B9500A20B2B /* Info.plist */,
@@ -115,13 +123,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C0F59163236ADB050000FA4A /* Screen Brightness Slider */ = {
+		C0F59163236ADB050000FA4A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C0F59164236ADB940000FA4A /* ScreenBrightnessSliderView.swift */,
-				C0F59166236ADBBC0000FA4A /* ScreenBrightnessSliderView.xib */,
+				C08641E9236E08F200286953 /* BrightnessSlider */,
+				C086E9A92361E20200BD4FA9 /* Menu.swift */,
 			);
-			path = "Screen Brightness Slider";
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0ED0AC123590B9500A20B2B /* Assets.xcassets in Resources */,
-				C0F59167236ADBBC0000FA4A /* ScreenBrightnessSliderView.xib in Resources */,
+				C0F59167236ADBBC0000FA4A /* BrightnessSliderView.xib in Resources */,
 				C0ED0AC423590B9500A20B2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,7 +250,7 @@
 				C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */,
 				C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */,
 				C01B48B72369B89100477C03 /* NSScreen+Brightness.swift in Sources */,
-				C0F59165236ADB940000FA4A /* ScreenBrightnessSliderView.swift in Sources */,
+				C0F59165236ADB940000FA4A /* BrightnessSliderView.swift in Sources */,
 				C086E9AA2361E20200BD4FA9 /* Menu.swift in Sources */,
 				C01B48B52369B6B500477C03 /* ScreenBrightness.swift in Sources */,
 				C07FF3B7236B0675003C9E56 /* NSView+LoadFromNib.swift in Sources */,
