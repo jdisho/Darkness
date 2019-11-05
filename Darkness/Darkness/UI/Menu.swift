@@ -86,7 +86,6 @@ class Menu: NSMenu {
             brightnessMenuItem,
             NSMenuItem.separator(),
             aboutMenuItem,
-            NSMenuItem.separator(),
             quitMenuItem
             ]
         )
