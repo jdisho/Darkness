@@ -21,3 +21,9 @@ extension NSView {
         return view
     }
 }
+
+extension NSViewController {
+    static func loadFromNib() -> Self {
+         Self(nibName: String(describing: self), bundle: nil)
+    }
+}

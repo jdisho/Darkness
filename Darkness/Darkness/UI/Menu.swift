@@ -51,6 +51,17 @@ class Menu: NSMenu {
         return menuItem
     }()
 
+
+    private lazy var aboutMenuItem: NSMenuItem = {
+        let menuItem = NSMenuItem(
+            title: "About",
+            action: #selector(openAbout),
+            keyEquivalent: ""
+        )
+        menuItem.target = self
+        return menuItem
+    }()
+
     private lazy var quitMenuItem: NSMenuItem = {
         let menuItem = NSMenuItem(
             title: "Quit",
@@ -74,6 +85,8 @@ class Menu: NSMenu {
             NSMenuItem.separator(),
             brightnessMenuItem,
             NSMenuItem.separator(),
+            aboutMenuItem,
+            NSMenuItem.separator(),
             quitMenuItem
             ]
         )
@@ -86,6 +99,24 @@ class Menu: NSMenu {
     @objc private func toggleAppearance() {
         Appearance.shared.toggle()
         (brightnessMenuItem.view as? BrightnessSliderView)?.disableAutomaticSwitch()
+    }
+
+    @objc private func openAbout() {
+        let aboutViewController = AboutViewController.loadFromNib()
+        let aboutWindow = NSWindow(contentViewController: aboutViewController)
+
+        aboutWindow.level = .modalPanel
+        aboutWindow.titleVisibility = .hidden
+        aboutWindow.titlebarAppearsTransparent = true
+        aboutWindow.styleMask.remove(.fullScreen)
+        aboutWindow.styleMask.remove(.miniaturizable)
+        aboutWindow.styleMask.remove(.resizable)
+        aboutWindow.makeKeyAndOrderFront(self)
+
+        aboutWindow.standardWindowButton(.zoomButton)?.isHidden = true
+        aboutWindow.standardWindowButton(.miniaturizeButton)?.isHidden = true
+
+        NSWindowController(window: aboutWindow).showWindow(self)
     }
 
     @objc private func quitDarkness() {
