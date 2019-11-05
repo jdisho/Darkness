@@ -102,22 +102,23 @@ class Menu: NSMenu {
     }
 
     @objc private func openAbout() {
-        let aboutViewController = AboutViewController.loadFromNib()
-        let aboutWindow = NSWindow(contentViewController: aboutViewController)
+        if NSApp.windows.first(where: { $0.contentViewController is AboutViewController }) == nil {
+            let aboutViewController = AboutViewController.loadFromNib()
+            let aboutWindow = NSWindow(contentViewController: aboutViewController)
+
+            aboutWindow.titleVisibility = .hidden
+            aboutWindow.titlebarAppearsTransparent = true
+            aboutWindow.styleMask.remove(.fullScreen)
+            aboutWindow.styleMask.remove(.miniaturizable)
+            aboutWindow.styleMask.remove(.resizable)
+
+            aboutWindow.standardWindowButton(.zoomButton)?.isHidden = true
+            aboutWindow.standardWindowButton(.miniaturizeButton)?.isHidden = true
+
+            NSWindowController(window: aboutWindow).showWindow(self)
+        }
 
         NSApp.activate(ignoringOtherApps: true)
-
-        aboutWindow.titleVisibility = .hidden
-        aboutWindow.titlebarAppearsTransparent = true
-        aboutWindow.styleMask.remove(.fullScreen)
-        aboutWindow.styleMask.remove(.miniaturizable)
-        aboutWindow.styleMask.remove(.resizable)
-        aboutWindow.makeKeyAndOrderFront(self)
-
-        aboutWindow.standardWindowButton(.zoomButton)?.isHidden = true
-        aboutWindow.standardWindowButton(.miniaturizeButton)?.isHidden = true
-
-        NSWindowController(window: aboutWindow).showWindow(self)
     }
 
     @objc private func quitDarkness() {
