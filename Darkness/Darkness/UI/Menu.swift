@@ -105,7 +105,8 @@ class Menu: NSMenu {
         let aboutViewController = AboutViewController.loadFromNib()
         let aboutWindow = NSWindow(contentViewController: aboutViewController)
 
-        aboutWindow.level = .modalPanel
+        NSApp.activate(ignoringOtherApps: true)
+
         aboutWindow.titleVisibility = .hidden
         aboutWindow.titlebarAppearsTransparent = true
         aboutWindow.styleMask.remove(.fullScreen)
