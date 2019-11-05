@@ -22,13 +22,13 @@ class ScreenBrightness {
         }
     }
 
-    /// Observe the screen brightness every a 1 second.
     func observe(_ observer: @escaping ((Float) -> Void)) {
         startObserving()
         let observation = Observation(observer: observer)
         observableBrightnessLevel.observe(observation)
     }
 
+    /// Observe the screen brigh#tness every a 1 second.
     func startObserving() {
         stopObserving()
         DispatchQueue.main.async {

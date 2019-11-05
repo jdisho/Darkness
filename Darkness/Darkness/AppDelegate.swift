@@ -19,10 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func configureStatusItem() {
         statusItem.menu = Menu()
-
-        Appearance.shared.observe { appearance in
-            self.statusItem.button?.image = (Appearance.shared.mode == .dark ? "moon.stars.fill" : "sun.max.fill").toImage()
-        }
+        statusItem.button?.image = "moon.stars.fill".toImage()
     }
 }
 
