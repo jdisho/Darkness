@@ -15,6 +15,7 @@
 		C07FF3B7236B0675003C9E56 /* NSView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FF3B6236B0675003C9E56 /* NSView+LoadFromNib.swift */; };
 		C086E9AA2361E20200BD4FA9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E9A92361E20200BD4FA9 /* Menu.swift */; };
 		C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF171E235F3FEC00521919 /* Appearance.swift */; };
+		C0C4498723809F7B00A7A488 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C4498623809F7B00A7A488 /* Bundle+Version.swift */; };
 		C0ED0ABD23590B9400A20B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */; };
 		C0ED0AC123590B9500A20B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC023590B9500A20B2B /* Assets.xcassets */; };
 		C0ED0AC423590B9500A20B2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0ED0AC223590B9500A20B2B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		C07FF3B6236B0675003C9E56 /* NSView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+LoadFromNib.swift"; sourceTree = "<group>"; };
 		C086E9A92361E20200BD4FA9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C0BF171E235F3FEC00521919 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		C0C4498623809F7B00A7A488 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
 		C0ED0AB923590B9400A20B2B /* Darkness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darkness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0ED0ABC23590B9400A20B2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0ED0AC023590B9500A20B2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C01B48B42369B6B500477C03 /* ScreenBrightness.swift */,
 				C01B48B62369B89100477C03 /* NSScreen+Brightness.swift */,
 				C07FF3B6236B0675003C9E56 /* NSView+LoadFromNib.swift */,
+				C0C4498623809F7B00A7A488 /* Bundle+Version.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				C0FBD0B52365A1AA0057AAFF /* Observable.swift in Sources */,
 				C0BF171F235F3FEC00521919 /* Appearance.swift in Sources */,
+				C0C4498723809F7B00A7A488 /* Bundle+Version.swift in Sources */,
 				C01B48B72369B89100477C03 /* NSScreen+Brightness.swift in Sources */,
 				C061B54E23717F970071430D /* AboutViewController.swift in Sources */,
 				C0F59165236ADB940000FA4A /* BrightnessSliderView.swift in Sources */,
@@ -417,6 +421,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disho.Darkness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -439,6 +444,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disho.Darkness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
