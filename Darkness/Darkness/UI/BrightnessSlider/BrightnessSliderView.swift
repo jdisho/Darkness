@@ -15,7 +15,7 @@ class BrightnessSliderView: NSView {
         didSet {
             checkmarkButton.state = UserDefaults.standard.isAutomaticOnBrightnessSelected ? .on : .off
             checkmarkButton.isHighlighted = false
-            ScreenBrightness.shared.observe { level in
+            ScreenBrightness.shared.subscribe { level in
                 if UserDefaults.standard.isAutomaticOnBrightnessSelected {
                     Appearance.shared.mode = (level < UserDefaults.standard.brightnessThreshold) ? .dark : .light
                 }

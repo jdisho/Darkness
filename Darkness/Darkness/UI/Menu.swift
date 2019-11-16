@@ -21,7 +21,7 @@ class Menu: NSMenu {
 
         menuItem.target = self
 
-        Appearance.shared.observe { mode in
+        Appearance.shared.subscribe { mode in
             menuItem.title = "Dark Mode: \(mode == .dark ? "Enabled" : "Disabled")"
         }
 

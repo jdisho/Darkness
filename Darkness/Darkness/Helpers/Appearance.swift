@@ -33,9 +33,8 @@ class Appearance: NSObject {
         UserDefaults.standard.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: .new, context: nil)
     }
 
-    func observe(_ observer: @escaping ((Mode) -> Void)) {
-        let observation = Observation<Mode>(observer: observer)
-        observableMode.observe(observation)
+    func subscribe(_ observer: @escaping ((Mode) -> Void)) {
+        observableMode.subscribe(observer)
     }
 
     func toggle() {
@@ -53,7 +52,7 @@ class Appearance: NSObject {
         let mode: Mode = userDefaults.value(forKey: keyPath) as? String == self.mode.rawValue ? .dark : .light
 
         if UserDefaults.standard.internalInterfaceStyle != mode {
-            observableMode.value = mode
+            observableMode.next(mode)
             UserDefaults.standard.internalInterfaceStyle = nil
         }
     }
@@ -69,7 +68,7 @@ class Appearance: NSObject {
             print("Error: \(error)")
         }
 
-        observableMode.value = mode
+        observableMode.next(mode)
     }
 }
 

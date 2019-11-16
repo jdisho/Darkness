@@ -22,13 +22,12 @@ class ScreenBrightness {
         }
     }
 
-    func observe(_ observer: @escaping ((Float) -> Void)) {
+    func subscribe(_ observer: @escaping ((Float) -> Void)) {
         startObserving()
-        let observation = Observation(observer: observer)
-        observableBrightnessLevel.observe(observation)
+        observableBrightnessLevel.subscribe(observer)
     }
 
-    /// Observe the screen brigh#tness every a 1 second.
+    /// Observe the screen brightness every second.
     func startObserving() {
         stopObserving()
         DispatchQueue.main.async {
@@ -40,7 +39,7 @@ class ScreenBrightness {
                 repeats: true
             )
         }
-        observableBrightnessLevel.value = NSScreen.brightness
+        observableBrightnessLevel.next(NSScreen.brightness)
     }
 
     func stopObserving() {
@@ -49,7 +48,7 @@ class ScreenBrightness {
 
     @objc private func updateBrightnessLevel(){
         if oldBrightnessLevel != NSScreen.brightness {
-            observableBrightnessLevel.value = NSScreen.brightness
+            observableBrightnessLevel.next(NSScreen.brightness)
             oldBrightnessLevel = NSScreen.brightness
         }
     }

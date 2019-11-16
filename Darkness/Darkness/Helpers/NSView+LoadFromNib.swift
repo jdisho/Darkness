@@ -24,6 +24,6 @@ extension NSView {
 
 extension NSViewController {
     static func loadFromNib() -> Self {
-         Self(nibName: String(describing: self), bundle: nil)
+         return Self(nibName: String(describing: self), bundle: nil)
     }
 }
