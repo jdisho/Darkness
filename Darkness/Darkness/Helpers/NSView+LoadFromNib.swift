@@ -9,12 +9,12 @@
 import AppKit
 
 extension NSView {
-    static func loadFromNib() -> NSView {
+    static func loadFromNib() -> Self {
         var topLevelObjects: NSArray?
         let nib = NSNib(nibNamed: String(describing: self), bundle: Bundle(for: self))
         guard
             nib?.instantiate(withOwner: nil, topLevelObjects: &topLevelObjects) == true,
-            let view = topLevelObjects?.first(where: { $0 is NSView }) as? NSView
+            let view = topLevelObjects?.first(where: { $0 is Self }) as? Self
         else {
             fatalError("Couldn't find nib file for \(self)")
         }

@@ -16,59 +16,151 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="216" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jFZ-Wn-jfW">
-                    <rect key="frame" x="75" y="150" width="150" height="150"/>
+                    <rect key="frame" x="58" y="200" width="100" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="HJ7-RQ-J5p"/>
-                        <constraint firstAttribute="width" constant="150" id="fe9-s6-5GK"/>
+                        <constraint firstAttribute="height" constant="100" id="HJ7-RQ-J5p"/>
+                        <constraint firstAttribute="width" constant="100" id="fe9-s6-5GK"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="darkness.logo" id="TYv-We-dWR"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-KQ-nS9">
-                    <rect key="frame" x="14" y="112" width="272" height="38"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Darkness" id="Qpi-SZ-KFI">
-                        <font key="font" metaFont="systemMedium" size="32"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-Br-Hxh">
-                    <rect key="frame" x="14" y="88" width="272" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1.0.0" id="RRc-ID-pem">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaC-zh-PXr">
+                    <rect key="frame" x="16" y="143" width="184" height="49"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-KQ-nS9">
+                            <rect key="frame" x="-2" y="19" width="188" height="30"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Darkness" id="Qpi-SZ-KFI">
+                                <font key="font" metaFont="systemMedium" size="26"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-Br-Hxh">
+                            <rect key="frame" x="-2" y="0.0" width="188" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1.0.0" id="RRc-ID-pem">
+                                <font key="font" metaFont="menu" size="12"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="S6k-Br-Hxh" firstAttribute="leading" secondItem="AaC-zh-PXr" secondAttribute="leading" id="8mx-0V-aGT"/>
+                        <constraint firstAttribute="trailing" secondItem="S6k-Br-Hxh" secondAttribute="trailing" id="Af9-9y-zCO"/>
+                        <constraint firstAttribute="trailing" secondItem="nlc-KQ-nS9" secondAttribute="trailing" id="eRw-B6-yB6"/>
+                        <constraint firstItem="nlc-KQ-nS9" firstAttribute="leading" secondItem="AaC-zh-PXr" secondAttribute="leading" id="vT3-av-YpV"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-Ej-2UV">
-                    <rect key="frame" x="14" y="24" width="272" height="16"/>
+                    <rect key="frame" x="18" y="8" width="184" height="15"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="© 2019 Joan Disho" id="i9x-LJ-RcA">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu" size="12"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRN-P5-aIv">
+                    <rect key="frame" x="16" y="39" width="184" height="52"/>
+                    <subviews>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="KBC-xl-7TJ">
+                            <rect key="frame" x="26" y="28" width="132" height="24"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HbO-rZ-8Ca">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="4e6-QO-DYc"/>
+                                        <constraint firstAttribute="width" constant="24" id="Mh2-Kn-xWN"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter.logo.blue" id="CeH-Hh-zqu"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-8F-zd3">
+                                    <rect key="frame" x="32" y="4" width="102" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Follow @_disho" id="1Xo-yz-IY5">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="HbO-rZ-8Ca" firstAttribute="leading" secondItem="KBC-xl-7TJ" secondAttribute="leading" id="1Ho-md-F9R"/>
+                                <constraint firstItem="HbO-rZ-8Ca" firstAttribute="centerY" secondItem="KBC-xl-7TJ" secondAttribute="centerY" id="Gyc-Dc-6xS"/>
+                                <constraint firstAttribute="height" constant="24" id="e1m-Tj-eTH"/>
+                                <constraint firstItem="9Jc-8F-zd3" firstAttribute="centerY" secondItem="KBC-xl-7TJ" secondAttribute="centerY" id="krI-qk-9MD"/>
+                                <constraint firstAttribute="trailing" secondItem="9Jc-8F-zd3" secondAttribute="trailing" id="lRJ-6U-B84"/>
+                                <constraint firstItem="9Jc-8F-zd3" firstAttribute="leading" secondItem="HbO-rZ-8Ca" secondAttribute="trailing" constant="10" id="ra0-88-r9p"/>
+                            </constraints>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="dW9-ti-sRC">
+                            <rect key="frame" x="21" y="0.0" width="142" height="24"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCr-aG-B5o">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="eqc-gB-uKJ"/>
+                                        <constraint firstAttribute="height" constant="24" id="hOC-w4-cVF"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="octocat" id="GL8-nm-IlS"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ljf-GU-H0o">
+                                    <rect key="frame" x="32" y="4" width="112" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="GitHub repository" id="Dj1-St-EhE">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ljf-GU-H0o" firstAttribute="leading" secondItem="LCr-aG-B5o" secondAttribute="trailing" constant="10" id="2Of-Dm-Apk"/>
+                                <constraint firstItem="LCr-aG-B5o" firstAttribute="centerY" secondItem="dW9-ti-sRC" secondAttribute="centerY" id="7op-gj-8WU"/>
+                                <constraint firstAttribute="height" constant="24" id="CZH-sk-djz"/>
+                                <constraint firstItem="LCr-aG-B5o" firstAttribute="leading" secondItem="dW9-ti-sRC" secondAttribute="leading" id="EC9-Nc-zE0"/>
+                                <constraint firstAttribute="trailing" secondItem="ljf-GU-H0o" secondAttribute="trailing" id="USq-MN-xqc"/>
+                                <constraint firstItem="ljf-GU-H0o" firstAttribute="centerY" secondItem="dW9-ti-sRC" secondAttribute="centerY" id="qCY-qN-B47"/>
+                            </constraints>
+                        </customView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="S6k-Br-Hxh" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="HcF-gM-Je2"/>
-                <constraint firstItem="jFZ-Wn-jfW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Lo3-LT-nTg"/>
-                <constraint firstItem="oCM-Ej-2UV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="N2R-L4-mqN"/>
-                <constraint firstAttribute="trailing" secondItem="nlc-KQ-nS9" secondAttribute="trailing" constant="16" id="Ql9-iw-BW9"/>
-                <constraint firstItem="nlc-KQ-nS9" firstAttribute="top" secondItem="jFZ-Wn-jfW" secondAttribute="bottom" id="bvd-xn-p2Y"/>
-                <constraint firstAttribute="bottom" secondItem="oCM-Ej-2UV" secondAttribute="bottom" constant="24" id="c15-69-4oo"/>
-                <constraint firstItem="nlc-KQ-nS9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="gb9-wq-5Ke"/>
-                <constraint firstItem="S6k-Br-Hxh" firstAttribute="top" secondItem="nlc-KQ-nS9" secondAttribute="bottom" constant="8" id="hXa-rg-J3Y"/>
-                <constraint firstAttribute="trailing" secondItem="S6k-Br-Hxh" secondAttribute="trailing" constant="16" id="kGd-6r-3gy"/>
-                <constraint firstItem="jFZ-Wn-jfW" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="ooO-Ip-h0k"/>
+                <constraint firstItem="JRN-P5-aIv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="85h-uG-HDG"/>
+                <constraint firstItem="oCM-Ej-2UV" firstAttribute="top" secondItem="JRN-P5-aIv" secondAttribute="bottom" constant="16" id="Faj-gV-KS3"/>
+                <constraint firstAttribute="trailing" secondItem="JRN-P5-aIv" secondAttribute="trailing" constant="16" id="Ic0-DD-CFe"/>
+                <constraint firstItem="jFZ-Wn-jfW" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="MJp-6n-l3O"/>
+                <constraint firstItem="oCM-Ej-2UV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="N2R-L4-mqN"/>
+                <constraint firstAttribute="trailing" secondItem="AaC-zh-PXr" secondAttribute="trailing" constant="16" id="Smq-lQ-4Ah"/>
+                <constraint firstItem="AaC-zh-PXr" firstAttribute="top" secondItem="jFZ-Wn-jfW" secondAttribute="bottom" constant="8" symbolic="YES" id="Zpq-gk-q7u"/>
+                <constraint firstAttribute="bottom" secondItem="oCM-Ej-2UV" secondAttribute="bottom" constant="8" id="c15-69-4oo"/>
+                <constraint firstItem="AaC-zh-PXr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="fRK-Ay-EYh"/>
+                <constraint firstItem="jFZ-Wn-jfW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="iDP-zw-cIh"/>
                 <constraint firstAttribute="trailing" secondItem="oCM-Ej-2UV" secondAttribute="trailing" constant="16" id="pVw-6u-gYs"/>
             </constraints>
-            <point key="canvasLocation" x="104" y="-27"/>
+            <point key="canvasLocation" x="132" y="-12"/>
         </customView>
     </objects>
     <resources>
         <image name="darkness.logo" width="1718" height="1718"/>
+        <image name="octocat" width="800" height="665"/>
+        <image name="twitter.logo.blue" width="400" height="400"/>
     </resources>
 </document>

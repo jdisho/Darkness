@@ -103,10 +103,10 @@ class Menu: NSMenu {
     @objc private func openAbout() {
         if NSApp.windows.first(where: { $0.contentViewController is AboutViewController }) == nil {
             let aboutViewController = AboutViewController.loadFromNib()
+            aboutViewController.title = "About"
+
             let aboutWindow = NSWindow(contentViewController: aboutViewController)
 
-            aboutWindow.titleVisibility = .hidden
-            aboutWindow.titlebarAppearsTransparent = true
             aboutWindow.styleMask.remove(.fullScreen)
             aboutWindow.styleMask.remove(.miniaturizable)
             aboutWindow.styleMask.remove(.resizable)
