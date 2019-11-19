@@ -10,6 +10,7 @@ import Cocoa
 
 class AboutViewController: NSViewController {
 
+    @IBOutlet private var imageView: NSImageView!
     @IBOutlet private var versionNumberTextField: NSTextField!
     @IBOutlet private var copyrightTextField: NSTextField!
 
@@ -24,11 +25,18 @@ class AboutViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        imageView.image = NSImage.darknessLogo
+
         if let versionNumber = Bundle.main.versionNumber {
              versionNumberTextField.stringValue = "Version \(versionNumber)"
         }
 
         copyrightTextField.stringValue = copyright
     }
+}
 
+private extension NSImage {
+    static var darknessLogo: Self? {
+        return Self(named: "darkness.logo")
+    }
 }

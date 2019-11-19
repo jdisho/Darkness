@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AboutViewController" customModule="Darkness" customModuleProvider="target">
             <connections>
                 <outlet property="copyrightTextField" destination="oCM-Ej-2UV" id="kCr-q2-zjd"/>
+                <outlet property="imageView" destination="jFZ-Wn-jfW" id="0Tr-9R-dn7"/>
                 <outlet property="versionNumberTextField" destination="S6k-Br-Hxh" id="H8P-O3-D8b"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -24,7 +25,7 @@
                         <constraint firstAttribute="height" constant="150" id="HJ7-RQ-J5p"/>
                         <constraint firstAttribute="width" constant="150" id="fe9-s6-5GK"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Darkness" id="TYv-We-dWR"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="darkness.logo" id="TYv-We-dWR"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-KQ-nS9">
                     <rect key="frame" x="14" y="112" width="272" height="38"/>
@@ -68,6 +69,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="Darkness" width="1718" height="1718"/>
+        <image name="darkness.logo" width="1718" height="1718"/>
     </resources>
 </document>
