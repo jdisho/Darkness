@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AboutViewController" customModule="Darkness" customModuleProvider="target">
             <connections>
-                <outlet property="copyrightTextField" destination="oCM-Ej-2UV" id="kCr-q2-zjd"/>
+                <outlet property="copyrightButton" destination="xMX-Cl-qEc" id="MTK-4s-qfx"/>
                 <outlet property="imageView" destination="jFZ-Wn-jfW" id="0Tr-9R-dn7"/>
                 <outlet property="versionNumberTextField" destination="S6k-Br-Hxh" id="H8P-O3-D8b"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -41,7 +41,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S6k-Br-Hxh">
                             <rect key="frame" x="-2" y="0.0" width="188" height="15"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1.0.0" id="RRc-ID-pem">
-                                <font key="font" metaFont="menu" size="12"/>
+                                <font key="font" metaFont="system" size="12"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -62,19 +62,11 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-Ej-2UV">
-                    <rect key="frame" x="18" y="8" width="184" height="15"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="© 2019 Joan Disho" id="i9x-LJ-RcA">
-                        <font key="font" metaFont="menu" size="12"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRN-P5-aIv">
-                    <rect key="frame" x="16" y="39" width="184" height="52"/>
+                    <rect key="frame" x="16" y="41" width="184" height="52"/>
                     <subviews>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="KBC-xl-7TJ">
-                            <rect key="frame" x="26" y="28" width="132" height="24"/>
+                            <rect key="frame" x="22" y="28" width="141" height="24"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HbO-rZ-8Ca">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -84,26 +76,29 @@
                                     </constraints>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter.logo.blue" id="CeH-Hh-zqu"/>
                                 </imageView>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-8F-zd3">
-                                    <rect key="frame" x="32" y="4" width="102" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Follow @_disho" id="1Xo-yz-IY5">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PYY-sL-pVO">
+                                    <rect key="frame" x="24" y="5" width="117" height="15"/>
+                                    <buttonCell key="cell" type="bevel" title="Follow @_disho" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="q1v-0P-wch">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system" size="12"/>
+                                    </buttonCell>
+                                    <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <action selector="openTwitter:" target="-2" id="FpE-U5-v7o"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="HbO-rZ-8Ca" firstAttribute="leading" secondItem="KBC-xl-7TJ" secondAttribute="leading" id="1Ho-md-F9R"/>
+                                <constraint firstAttribute="trailing" secondItem="PYY-sL-pVO" secondAttribute="trailing" id="DnC-AE-vFV"/>
                                 <constraint firstItem="HbO-rZ-8Ca" firstAttribute="centerY" secondItem="KBC-xl-7TJ" secondAttribute="centerY" id="Gyc-Dc-6xS"/>
+                                <constraint firstItem="PYY-sL-pVO" firstAttribute="centerY" secondItem="KBC-xl-7TJ" secondAttribute="centerY" id="PFy-ro-eRf"/>
+                                <constraint firstItem="PYY-sL-pVO" firstAttribute="leading" secondItem="HbO-rZ-8Ca" secondAttribute="trailing" id="PNG-xR-cSE"/>
                                 <constraint firstAttribute="height" constant="24" id="e1m-Tj-eTH"/>
-                                <constraint firstItem="9Jc-8F-zd3" firstAttribute="centerY" secondItem="KBC-xl-7TJ" secondAttribute="centerY" id="krI-qk-9MD"/>
-                                <constraint firstAttribute="trailing" secondItem="9Jc-8F-zd3" secondAttribute="trailing" id="lRJ-6U-B84"/>
-                                <constraint firstItem="9Jc-8F-zd3" firstAttribute="leading" secondItem="HbO-rZ-8Ca" secondAttribute="trailing" constant="10" id="ra0-88-r9p"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="dW9-ti-sRC">
-                            <rect key="frame" x="21" y="0.0" width="142" height="24"/>
+                            <rect key="frame" x="20" y="0.0" width="144" height="24"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCr-aG-B5o">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -113,22 +108,25 @@
                                     </constraints>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="octocat" id="GL8-nm-IlS"/>
                                 </imageView>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ljf-GU-H0o">
-                                    <rect key="frame" x="32" y="4" width="112" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="GitHub repository" id="Dj1-St-EhE">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVs-jb-qYW">
+                                    <rect key="frame" x="32" y="5" width="112" height="15"/>
+                                    <buttonCell key="cell" type="bevel" title="GitHub repository" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="exC-av-4df">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system" size="12"/>
+                                    </buttonCell>
+                                    <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <action selector="openGitHub:" target="-2" id="ew5-Rr-tPl"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="ljf-GU-H0o" firstAttribute="leading" secondItem="LCr-aG-B5o" secondAttribute="trailing" constant="10" id="2Of-Dm-Apk"/>
                                 <constraint firstItem="LCr-aG-B5o" firstAttribute="centerY" secondItem="dW9-ti-sRC" secondAttribute="centerY" id="7op-gj-8WU"/>
                                 <constraint firstAttribute="height" constant="24" id="CZH-sk-djz"/>
                                 <constraint firstItem="LCr-aG-B5o" firstAttribute="leading" secondItem="dW9-ti-sRC" secondAttribute="leading" id="EC9-Nc-zE0"/>
-                                <constraint firstAttribute="trailing" secondItem="ljf-GU-H0o" secondAttribute="trailing" id="USq-MN-xqc"/>
-                                <constraint firstItem="ljf-GU-H0o" firstAttribute="centerY" secondItem="dW9-ti-sRC" secondAttribute="centerY" id="qCY-qN-B47"/>
+                                <constraint firstAttribute="trailing" secondItem="hVs-jb-qYW" secondAttribute="trailing" id="WM9-pl-bDm"/>
+                                <constraint firstItem="hVs-jb-qYW" firstAttribute="centerY" secondItem="dW9-ti-sRC" secondAttribute="centerY" id="f11-3R-xL2"/>
+                                <constraint firstItem="hVs-jb-qYW" firstAttribute="leading" secondItem="LCr-aG-B5o" secondAttribute="trailing" constant="8" symbolic="YES" id="pWi-FO-ctd"/>
                             </constraints>
                         </customView>
                     </subviews>
@@ -141,19 +139,29 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xMX-Cl-qEc">
+                    <rect key="frame" x="16" y="10" width="184" height="15"/>
+                    <buttonCell key="cell" type="bevel" title="© 2019 Joan Disho" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="4gx-pW-kfz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="12"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openLicence:" target="-2" id="2qv-Sf-qIE"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="xMX-Cl-qEc" firstAttribute="top" secondItem="JRN-P5-aIv" secondAttribute="bottom" constant="16" id="50n-Yy-If4"/>
                 <constraint firstItem="JRN-P5-aIv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="85h-uG-HDG"/>
-                <constraint firstItem="oCM-Ej-2UV" firstAttribute="top" secondItem="JRN-P5-aIv" secondAttribute="bottom" constant="16" id="Faj-gV-KS3"/>
                 <constraint firstAttribute="trailing" secondItem="JRN-P5-aIv" secondAttribute="trailing" constant="16" id="Ic0-DD-CFe"/>
                 <constraint firstItem="jFZ-Wn-jfW" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="MJp-6n-l3O"/>
-                <constraint firstItem="oCM-Ej-2UV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="N2R-L4-mqN"/>
+                <constraint firstAttribute="trailing" secondItem="xMX-Cl-qEc" secondAttribute="trailing" constant="16" id="RUE-Ma-VKa"/>
                 <constraint firstAttribute="trailing" secondItem="AaC-zh-PXr" secondAttribute="trailing" constant="16" id="Smq-lQ-4Ah"/>
+                <constraint firstItem="xMX-Cl-qEc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="Yi8-IU-G8R"/>
                 <constraint firstItem="AaC-zh-PXr" firstAttribute="top" secondItem="jFZ-Wn-jfW" secondAttribute="bottom" constant="8" symbolic="YES" id="Zpq-gk-q7u"/>
-                <constraint firstAttribute="bottom" secondItem="oCM-Ej-2UV" secondAttribute="bottom" constant="8" id="c15-69-4oo"/>
+                <constraint firstAttribute="bottom" secondItem="xMX-Cl-qEc" secondAttribute="bottom" constant="10" id="dz6-ff-wrb"/>
                 <constraint firstItem="AaC-zh-PXr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="fRK-Ay-EYh"/>
                 <constraint firstItem="jFZ-Wn-jfW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="iDP-zw-cIh"/>
-                <constraint firstAttribute="trailing" secondItem="oCM-Ej-2UV" secondAttribute="trailing" constant="16" id="pVw-6u-gYs"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-12"/>
         </customView>

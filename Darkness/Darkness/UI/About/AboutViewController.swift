@@ -12,7 +12,7 @@ class AboutViewController: NSViewController {
 
     @IBOutlet private var imageView: NSImageView!
     @IBOutlet private var versionNumberTextField: NSTextField!
-    @IBOutlet private var copyrightTextField: NSTextField!
+    @IBOutlet private var copyrightButton: NSButton!
 
     private var copyright: String {
         let year = Calendar.current.component(.year, from: Date())
@@ -31,7 +31,22 @@ class AboutViewController: NSViewController {
              versionNumberTextField.stringValue = "Version \(versionNumber)"
         }
 
-        copyrightTextField.stringValue = copyright
+        copyrightButton.stringValue = copyright
+    }
+
+    @IBAction private func openTwitter(_ sender: Any) {
+        guard let url = URL(string: "https://twitter.com/_disho") else { return }
+        NSWorkspace.shared.open(url)
+    }
+
+    @IBAction private func openGitHub(_ sender: Any) {
+        guard let url = URL(string: "https://github.com/jdisho/Darkness") else { return }
+        NSWorkspace.shared.open(url)
+    }
+
+    @IBAction func openLicence(_ sender: Any) {
+        guard let url = URL(string: "https://github.com/jdisho/Darkness/blob/master/LICENSE") else { return }
+        NSWorkspace.shared.open(url)
     }
 }
 
