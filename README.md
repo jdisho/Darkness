@@ -9,8 +9,6 @@
     </a>
 </p>
 
-<br>
-
 ⬇️ [Download](https://github.com/jdisho/Darkness/releases/download/v.1.0/Darkness.app.zip) the latest release ([v.1.0](https://github.com/jdisho/Darkness/releases/tag/v.1.0))
 
 ## 🔖 Features
