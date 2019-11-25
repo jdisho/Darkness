@@ -1,16 +1,15 @@
 # 🌃 Darkness 
-**Darkness is a menu bar app which gives you more control over your macOS appearance.**
+**Darkness is a menu bar app which gives you more control over your macOS appearance.** 
+
 <p align="left">
-  <a href="https://swift.org">
-      <img src="https://img.shields.io/badge/Swift-5.1-orange.svg" />
-  </a>
-  <a href="https://developer.apple.com/macos/">
-      <img src="http://img.shields.io/badge/platform-macOS-red.svg?style=flat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=_disho">
-      <img src="https://img.shields.io/twitter/follow/_disho?style=social&logo=twitter">
-  </a>
+    <img src="https://img.shields.io/badge/Swift-5.1-orange.svg" />
+    <img src="https://img.shields.io/badge/platforms-macOS-brightgreen.svg?style=flat" alt="Mac" />
+    <a href="https://twitter.com/_disho">
+        <img src="https://img.shields.io/badge/twitter-@_disho-blue.svg?style=flat" alt="Twitter: @_disho" />
+    </a>
 </p>
+
+<br>
 
 ⬇️ [Download](https://github.com/jdisho/Darkness/releases/download/v.1.0/Darkness.app.zip) the latest release ([v.1.0](https://github.com/jdisho/Darkness/releases/tag/v.1.0))
 
@@ -33,7 +32,7 @@ cd Darkness/Darkness  # Go the project folder
 xed . # Open in Xcode
 ```
 
-- Run the app(⌘R)
+- Run the app (⌘R)
 
 Happy coding!
 
